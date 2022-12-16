@@ -1,12 +1,7 @@
-/**
- * @brief
- *
- * @return int
- */
+#include<stdio.h>
+
 int main()
 {
-    client_phone_correction_detection_test();
-    client_phone_correction_test();
-    in_fw_test_scenario();
+    printf("Hello, world\r\n");
     return 0;
 }

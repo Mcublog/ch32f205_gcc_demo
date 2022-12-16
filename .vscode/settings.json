@@ -1,0 +1,12 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "doxdocgen.generic.authorEmail": "v.konovalov@mcublog.ru",
+    "doxdocgen.generic.authorName": "Viacheslav",
+    "doxdocgen.file.copyrightTag": [
+        "@copyright Mcublog Copyright (c) {year}"
+    ],
+    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Microsoft, ColumnLimit: 90, IndentWidth: 4}",
+    // ColumnLimit: 90,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "task.autoDetect":"off"
+}

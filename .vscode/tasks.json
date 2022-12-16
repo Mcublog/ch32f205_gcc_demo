@@ -1,0 +1,70 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Flash: fw",
+            "command": "JLink",
+            "dependsOn":[
+                "CMake: fw build"
+            ],
+            "args": [
+                "-CommanderScript",
+                "scripts/flash_fw.jlink"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "cmake",
+            "label": "CMake: fw build",
+            "command": "build",
+            "targets": [
+                "f205_fw"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "echo": false,
+                "clear": true
+            },
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "cmake",
+            "label": "CMake: fw clean rebuild",
+            "command": "cleanRebuild",
+            "targets": [
+                "f205_fw"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Delete: build dir",
+            "type": "shell",
+            "windows": {
+                "command": "rm",
+                "args": [
+                    "build",
+                    "-r",
+                    "-force"
+                ]
+            },
+            "linux": {
+                "command": "rm",
+                "args": [
+                    "-rf",
+                    "build"
+                ]
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            }
+        }
+    ]
+}
