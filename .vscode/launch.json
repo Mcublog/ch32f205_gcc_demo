@@ -15,7 +15,7 @@
             "interface": "swd",
             "device": "CH32F205RB",
             "runToEntryPoint": "main",
-            // "svdFile": "${workspaceRoot}/resources/STM32F20x.svd",
+            "svdFile": "${workspaceRoot}/resources/CH32F205xx.svd",
             "serverArgs": [
                 "-s",
                 "${workspaceRoot}/scripts",
