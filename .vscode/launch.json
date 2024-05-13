@@ -6,23 +6,48 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "cortex-debug",
-            "request": "launch",
-            "name": "Debug: fw",
+            "name": "Debug (OpenOCD)",
             "cwd": "${workspaceRoot}",
-            "executable": "${workspaceRoot}/build/f205_fw",
-            "servertype": "jlink",
-            "device": "STM32F205RG",
+            "executable": "${command:cmake.launchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
             "interface": "swd",
-            "serialNumber": "", //If you have more than one J-Link probe, add the serial number here.
-            "runToEntryPoint": "Reset_Handler",
-            // "svdFile": "${workspaceRoot}/scripts/STM32F20x.svd",
-            "breakAfterReset": true,
+            "device": "CH32F205RB",
+            "runToEntryPoint": "main",
+            // "svdFile": "${workspaceRoot}/resources/STM32F20x.svd",
             "serverArgs": [
-                "-gui"
+                "-s",
+                "${workspaceRoot}/scripts",
             ],
-            // "preLaunchTask": "fw: debug",
-            "showDevDebugOutput":"raw"
+            "configFiles": [
+                "interface/wch-cmsis-dap.cfg",
+                "target/ch32f2x.cfg"
+            //     // "debug/rtt.cfg"
+            ],
+            "preLaunchCommands": [
+                "set mem inaccessible-by-default off",
+                "monitor reset"
+            ],
+            "postLaunchCommands": [
+                "monitor reset init",
+                "monitor sleep 100",
+            ],
+            // "rttConfig": {
+            //     "enabled": true,
+            //     "address": "auto",
+            //     "clearSearch": false,
+            //     "polling_interval": 20,
+            //     "rtt_start_retry": 20000,
+            //     "decoders": [
+            //         {
+            //             "label": "RTT channel 0",
+            //             "port": 0,
+            //             "timestamp": true,
+            //             "type": "console"
+            //         }
+            //     ]
+            // }
         }
     ]
 }

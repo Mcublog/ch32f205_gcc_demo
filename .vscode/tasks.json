@@ -65,6 +65,25 @@
             "presentation": {
                 "reveal": "silent"
             }
+        },
+        {
+            "type": "shell",
+            "dependsOn": "CMake: fw build",
+            "label": "OpenOcd: flash",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "command": "openocd",
+            "args": [
+                "-s",
+                "${workspaceRoot}/scripts",
+                "-f",
+                "interface/wch-cmsis-dap.cfg",
+                "-f",
+                "target/ch32f2x.cfg",
+                "-c", "program ${command:cmake.launchTargetPath} verify reset exit"
+            ],
+            "group": "test"
         }
     ]
 }
